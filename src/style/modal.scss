@@ -1,0 +1,11 @@
+.ant-modal-header {
+  display: flex;
+  justify-content: center;
+  .ant-modal-title {
+    font-size: 24px;
+  }
+}
+.ant-modal-footer{
+    display: flex;
+    justify-content: center;
+}
