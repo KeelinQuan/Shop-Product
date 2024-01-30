@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import modalReducer from "./modal";
 import authReducer from "./auth";
-
+import cartReducer from "./cart";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -9,11 +9,12 @@ import storage from "redux-persist/lib/storage";
 const rootReducers = combineReducers({
   modal: modalReducer,
   auth: authReducer,
+  cart: cartReducer,
 });
 const persistConfig = {
   key: "root",
   storage, //lưu vào localstorege
-  whitelist: ["auth"],
+  whitelist: ["auth",'cart'],
 };
 
 //quản lý lưu trữ và khôi phục
@@ -21,11 +22,11 @@ const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 //tạo kho store với reducer là persistReducer
 export const store = configureStore({
-    reducer: persistedReducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: false, // Disable serializable check
-      }),
-  })
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false, // Disable serializable check
+    }),
+});
 
 export const persistor = persistStore(store);

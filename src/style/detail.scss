@@ -1,14 +1,16 @@
+@import "/vaiable";
+
 .product {
-//   margin: 0 !important;
-  //   .ant-col {
-  //     padding-left: 10px !important;
-  //     padding-right: 10px !important;
-  //   }
-  .title{
+  margin: 0 !important;
+  .ant-col {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .title {
     margin: 15px 0;
     font-size: 2rem;
     color: #2329c8;
-}
+  }
   .info {
     & > div {
       margin: 10px 0;
@@ -45,10 +47,10 @@
     }
   }
 }
-@media only screen and (max-width: 400px) {
-  .product{
-      .title{
-          font-size: 1.3rem;
-      }
+@media only screen and (max-width: $sm) {
+  .product {
+    .title {
+      font-size: 1.3rem;
+    }
   }
 }

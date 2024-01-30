@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { FilterOutlined } from "@ant-design/icons";
 import { Button, Row, Col, Input, Select, Form } from "antd";
 import { useFetch } from "@/customhook/useFetching";
@@ -14,9 +13,6 @@ const FilterProduct = (props) => {
     setSortPrice,
     setPriceCondition,
     search,
-    setSearch,
-    childData,
-    setChildData,
   } = props;
 
   const { data: brand } = useFetch("/brands");
@@ -39,53 +35,41 @@ const FilterProduct = (props) => {
     });
     return resual;
   };
-  console.log(">>check", search);
   const handleChangeBrand = (value) => {
     setName(value);
-    // let queryObj = getQueryToObj();
-    // queryObj.brand = value;
-    // setQuery(queryObj);
+    let queryObj = getQueryToObj();
+    queryObj.brand = value;
+    setQuery(queryObj);
   };
   const handleChangeCategori = (value) => {
     setCategories(value);
-    // let queryObj = getQueryToObj();
-    // queryObj.categories = value;
-    // setQuery(queryObj);
+    let queryObj = getQueryToObj();
+    queryObj.categories = value;
+    setQuery(queryObj);
   };
 
   const handleChangePrice = (value) => {
     setSortPrice(value);
-    // let queryObj = getQueryToObj();
-    // queryObj.sort = value;
-    // setQuery(queryObj);
+    let queryObj = getQueryToObj();
+    queryObj.sort = value;
+    setQuery(queryObj);
   };
   const handleChangeMinMaxPrice = (value) => {
     setPriceCondition(value);
-    // let queryObj = getQueryToObj();
-    // if (value.min) {
-    //   queryObj.min = value.min;
-    // } else {
-    //   delete queryObj.min;
-    // }
-    // if (value.max) {
-    //   queryObj.max = value.max;
-    // } else {
-    //   delete queryObj.max;
-    // }
-    // setQuery(queryObj);
+    let queryObj = getQueryToObj();
+    if (value.min) {
+      queryObj.min = value.min;
+    } else {
+      delete queryObj.min;
+    }
+    if (value.max) {
+      queryObj.max = value.max;
+    } else {
+      delete queryObj.max;
+    }
+    setQuery(queryObj);
   };
-  // useEffect(() => {
-  //   let queryObj = getQueryToObj();
-  //   let defaultSort = queryObj.sort ? queryObj?.sort : "asc";
-  //   let defaultBrand = queryObj.brand ? queryObj?.brand?.split(",") : [];
-  //   let defaultPriceCondition = {
-  //     min: queryObj.min,
-  //     max: queryObj.max,
-  //   };
-  //   setName(defaultBrand);
-  //   setSortPrice(defaultSort);
-  //   setPriceCondition(defaultPriceCondition);
-  // }, []);
+
   const handleChangeDelete = () => {
     setName();
     setCategories();
@@ -95,6 +79,7 @@ const FilterProduct = (props) => {
       max: "",
     });
     form.resetFields();
+    setQuery("");
   };
 
   return (
@@ -105,13 +90,13 @@ const FilterProduct = (props) => {
           Filter Products
           <FilterOutlined />
         </h3>
-        <Row>
-          <Col span={24}>
+        {/* <Row>
+          <Col>
             <SearchComponent />
           </Col>
-        </Row>
+        </Row> */}
         <Row>
-          <Col span={12}>
+          <Col>
             <Row gutter={[15, 0]}>
               <Col>
                 <Select
@@ -142,7 +127,6 @@ const FilterProduct = (props) => {
                   onClear={handleChangeDelete}
                   onChange={(value) => {
                     handleChangePrice(value);
-                    console.log(">>price", value);
                   }}
                   style={{ width: "150px" }}
                   placeholder="Sắp xếp theo giá"
@@ -162,9 +146,8 @@ const FilterProduct = (props) => {
             </Row>
           </Col>
 
-          <Col span={12}>
+          <Col>
             <Form form={form} onFinish={handleChangeMinMaxPrice}>
-              <h1>Lọc theo giá tiền</h1>
               <Form.Item label="Giá thấp nhất" name="min">
                 <Input placeholder="Giá min" />
               </Form.Item>
@@ -178,8 +161,11 @@ const FilterProduct = (props) => {
 
         <Button onClick={handleChangeDelete}>Reset All</Button>
         <div className="search-result">
-          {search ? <h1>Tìm kiếm: {search}</h1> : null}
-          <h1>{name} Sản phẩm</h1>
+          {search ? (
+            <h1>Tìm kiếm: {search}</h1>
+          ) : name ? (
+            <h1> Sản phẩm: {name}</h1>
+          ) : null}
         </div>
       </div>
     </>

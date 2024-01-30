@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FilterProduct from "../Filter/FilterProduct";
 import ProductList from "./ProductList";
 import { useSearchParams } from "react-router-dom";
-
+import { Row, Col } from "antd";
 const BlockProduct = () => {
   const [name, setName] = useState();
   const [categories, setCategories] = useState();
@@ -12,13 +12,17 @@ const BlockProduct = () => {
     max: "",
   });
   const [childData, setChildData] = useState({});
-  const [search, setSearch] = useState();
+  const [query, setQuery] = useSearchParams();
+
   var queryFilterTxt = "";
+
+  let search = query.get("name");
   if (search) {
     queryFilterTxt += `&filters[name][$contains]=${search}`;
   }
+
   if (name) {
-    queryFilterTxt = `filters[idBrand][name]=${name}`;
+    queryFilterTxt = `&filters[idBrand][name]=${name}`;
   }
   if (categories) {
     queryFilterTxt += `&filters[idCategories][slug]=${categories}`;
@@ -29,25 +33,27 @@ const BlockProduct = () => {
   if (priceCondition.min && priceCondition.max) {
     queryFilterTxt += `&filters[price][$between][=${priceCondition.min}&filters[price][$between]=${priceCondition.max}`;
   }
-  
-  console.log(">>", queryFilterTxt);
-  console.log("cccccc",search);
   return (
     <>
-      <FilterProduct
-        name={name}
-        setName={setName}
-        categories={categories}
-        setCategories={setCategories}
-        sortPrice={sortPrice}
-        setSortPrice={setSortPrice}
-        setPriceCondition={setPriceCondition}
-        search={search}
-        setSearch={setSearch}
-        childData={childData}
-        setChildData={setChildData}
-      />
-      <ProductList query={queryFilterTxt} />
+      <Row>
+        <Col>
+          <FilterProduct
+            name={name}
+            setName={setName}
+            categories={categories}
+            setCategories={setCategories}
+            sortPrice={sortPrice}
+            setSortPrice={setSortPrice}
+            setPriceCondition={setPriceCondition}
+            search={search}
+            childData={childData}
+            setChildData={setChildData}
+          />
+        </Col>
+        <Col >
+          <ProductList query={queryFilterTxt} setQuery={setQuery} />
+        </Col>
+      </Row>
     </>
   );
 };

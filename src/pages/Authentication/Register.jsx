@@ -9,7 +9,6 @@ import { register } from "@/services/auth";
 import useNotification from "@/customHook/useNotify";
 import "@/style/modal.scss";
 import { useState } from "react";
-import { UserAddOutlined } from "@ant-design/icons";
 
 const Register = () => {
   const { contextHolder, infoNotify, errorNotify } = useNotification();
@@ -42,10 +41,8 @@ const Register = () => {
   };
   return (
     <>
-      <Button type="primary" icon={<UserAddOutlined />} onClick={showModal}>
-        REGISTER
-      </Button>
-
+     
+<a  onClick={showModal}>Đăng kí</a>
       <Modal
         forceRender
         form={form}

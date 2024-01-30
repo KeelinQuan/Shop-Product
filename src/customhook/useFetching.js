@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-export function useFetch(url, query = "") {
+export function useFetch(url, query = "", initPageSize = 12) {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState([]);
   const [reload, setReload] = useState();
@@ -8,7 +8,7 @@ export function useFetch(url, query = "") {
   const [paging, setPaging] = useState({
     page: 1,
     pageCount: 5,
-    pageSize: 12,
+    pageSize: initPageSize,
     total: 21,
   });
   const reloadData = () => {

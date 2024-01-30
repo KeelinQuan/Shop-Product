@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../layout/Home";
-import Detail from "../Components/Detail";
-import Layout from "../layout/Layout";
-
+import BaseLayout from "../layout/BaseLayout";
 import BlockProduct from "../Components/Product/BlockProduct";
+import Cart from "../pages/Cart";
+import ProductDetail from "../Components/Product/ProductDetail";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <BaseLayout />,
     children: [
       {
         path: "/",
@@ -24,11 +24,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/detail/:slug",
-        element: <Detail />,
+        element: <ProductDetail />,
       },
       {
-        path: "/test",
-        element: <h1>trang cho quan ly</h1>,
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

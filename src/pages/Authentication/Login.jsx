@@ -6,8 +6,6 @@ import "@/style/modal.scss";
 import useNotification from "@/customhook/useNotify";
 import { login } from "@/services/auth";
 import { useState } from "react";
-import { LoginOutlined } from "@ant-design/icons";
-
 const Login = () => {
   const dispatch = useDispatch();
   const { contextHolder, infoNotify, errorNotify } = useNotification();
@@ -43,9 +41,7 @@ const Login = () => {
   return (
     <>
       {contextHolder}
-      <Button icon={<LoginOutlined />} type="primary" onClick={showModal}>
-        Login
-      </Button>
+      <a onClick={showModal}>Đăng nhập</a>
       <Modal
         forceRender
         title={"Login-form"}

@@ -57,7 +57,6 @@ export default function SearchComponent(){
                     <Search type="search" className="board-search-input" aria-label="Board Search" placeholder='Tìm kiếm ...' 
                         onSearch={(value)=>{
                             nav(`/tim?name=${value}`)
-                            // nav(`/product?name=${value}`)
                         }}
                         enterButton
                     />

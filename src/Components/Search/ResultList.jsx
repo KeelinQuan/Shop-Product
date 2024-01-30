@@ -1,6 +1,6 @@
 import { Avatar, List } from "antd";
 import { useNavigate } from "react-router-dom";
-
+const { VITE_BASE_URL } = import.meta.env;
 export default function ResultList(props) {
   const nav = useNavigate();
   const handleClick = (item) => {
@@ -39,7 +39,7 @@ export default function ResultList(props) {
               avatar={
                 <Avatar
                   src={
-                    `https://backoffice.nodemy.vn` +
+                    VITE_BASE_URL +
                     item?.attributes?.image?.data[0]?.attributes?.url
                   }
                 />
