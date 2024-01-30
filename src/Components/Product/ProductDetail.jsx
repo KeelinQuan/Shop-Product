@@ -88,8 +88,8 @@ const ProductDetail = () => {
               {listImage ? <ImageGallery items={listImage} /> : null}
             </Col>
             <Col xs={24} md={12} className="info">
-              <h1 className="title">{data?.attributes?.name}</h1>
               <div>
+                <h1 className="title">{data?.attributes?.name}</h1>
                 <span className="price">
                   {convertToCurrency(data?.attributes?.price)}
                 </span>
@@ -173,18 +173,17 @@ const ProductDetail = () => {
           />
         </Col>
         <Col xs={24} md={6}>
-
-        {brand ? (
-          <ProductList
-            title="Sản phẩm cùng hãng"
-            query={`filters[idBrand][name]=${brand}&filters[slug][$ne]=${param.slug}`}
-            showPagination={false}
-            pageSize={4}
-            type="column"
-          />
-        ) : (
-          "Không có sản phẩm nào cùng hãng"
-        )}
+          {brand ? (
+            <ProductList
+              title="Sản phẩm cùng hãng"
+              query={`filters[idBrand][name]=${brand}&filters[slug][$ne]=${param.slug}`}
+              showPagination={false}
+              pageSize={4}
+              type="column"
+            />
+          ) : (
+            "Không có sản phẩm nào cùng hãng"
+          )}
         </Col>
       </Row>
     </>

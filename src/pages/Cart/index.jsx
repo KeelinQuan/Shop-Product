@@ -169,18 +169,6 @@ const Cart = () => {
     );
   };
 
-  const button = () => {
-    return (
-      <>
-        <Row>
-          <Col>
-            <Button> Proceed To Order</Button>
-          </Col>
-        </Row>
-      </>
-    );
-  };
-
   const cartItems = () => {
     return (
       <>
@@ -191,7 +179,7 @@ const Cart = () => {
             pagination={false}
             dataSource={dataSource}
             columns={columns}
-          ></Table>
+          />
         ) : (
           <Row justify={"center"} align={"middle"}>
             <h3 style={{ padding: 10 }}>Chưa có sản phẩm nào</h3>
@@ -227,7 +215,6 @@ const Cart = () => {
           </h3>
         </Col>
       </Row>
-      {/* {productList?.length !== 0 && button()} */}
     </>
   );
 };

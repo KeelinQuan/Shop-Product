@@ -90,12 +90,7 @@ const FilterProduct = (props) => {
           Filter Products
           <FilterOutlined />
         </h3>
-        {/* <Row>
-          <Col>
-            <SearchComponent />
-          </Col>
-        </Row> */}
-        <Row>
+        <Row gutter={[40, 0]}>
           <Col>
             <Row gutter={[15, 0]}>
               <Col>
@@ -148,10 +143,10 @@ const FilterProduct = (props) => {
 
           <Col>
             <Form form={form} onFinish={handleChangeMinMaxPrice}>
-              <Form.Item label="Giá thấp nhất" name="min">
+              <Form.Item name="min">
                 <Input placeholder="Giá min" />
               </Form.Item>
-              <Form.Item label="Giá cao nhất" name="max">
+              <Form.Item name="max">
                 <Input placeholder="Giá max" />
               </Form.Item>
               <Button htmlType="submit">Lọc</Button>
