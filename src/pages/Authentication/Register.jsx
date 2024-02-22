@@ -41,8 +41,7 @@ const Register = () => {
   };
   return (
     <>
-     
-<a  onClick={showModal}>Đăng kí</a>
+      <a onClick={showModal}>Đăng kí</a>
       <Modal
         forceRender
         form={form}
@@ -61,6 +60,7 @@ const Register = () => {
       >
         {contextHolder}
         <Form
+          form={form}
           name="registerForm"
           labelCol={{
             span: 6,

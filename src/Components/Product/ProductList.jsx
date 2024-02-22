@@ -12,10 +12,14 @@ const ProductList = (props) => {
     title,
     showPagination = true,
     pageSize = 12,
-    type='row'
+    type = "row",
   } = props;
   const { Meta } = Card;
-  const { data, paging, setPaging, loading } = useFetch("/products", query,pageSize);
+  const { data, paging, setPaging, loading } = useFetch(
+    "/products",
+    query,
+    pageSize
+  );
   useEffect(() => {
     if (typeof transferDataToParent === "function") {
       transferDataToParent({ data, paging, setPaging, loading });
@@ -79,7 +83,7 @@ const ProductList = (props) => {
         <Row>
           <h1>{title}</h1>
         </Row>
-        <Row gutter={[20, 40]}style={{flexDirection: type}}>
+        <Row gutter={[20, 40]} style={{ flexDirection: type }}>
           {data?.map((item, index) => {
             let imgUrl = item?.attributes?.image?.data[0]?.attributes?.url
               ? VITE_BASE_URL +
@@ -87,12 +91,13 @@ const ProductList = (props) => {
               : "";
 
             return (
-              <Col sm={24} md={6} key={index}>
+              <Col sm={24} md={type=='column' ? 24 : 6} key={index}>
                 <Link to={`/detail/${item.attributes?.slug}`}>
                   <Card
                     hoverable
                     key={item?.id}
-                    cover={<LazyLoadImage src={imgUrl} />}
+                    cover={<LazyLoadImage style={{width: '100%'}} src={imgUrl} />}
+                    
                   >
                     <Meta
                       style={{ marginBottom: "10px" }}

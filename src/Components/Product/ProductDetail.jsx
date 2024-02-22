@@ -185,6 +185,7 @@ const ProductDetail = () => {
             "Không có sản phẩm nào cùng hãng"
           )}
         </Col>
+    
       </Row>
     </>
   );

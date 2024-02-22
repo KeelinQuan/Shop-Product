@@ -1,12 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Menu, Row, Col, Button, Space, Drawer, Badge } from "antd";
+import { Menu, Row, Col, Drawer, Badge, Dropdown } from "antd";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { useWindowSize } from "@uidotdev/usehooks";
 import { logoutRedux } from "../redux/auth";
 import { ShoppingCartOutlined, MenuOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
@@ -16,7 +13,6 @@ const Header = () => {
   const token = useSelector((state) => state.auth.token);
   const count = useSelector((state) => state.cart.productList);
   const dispatch = useDispatch();
-  const nav = useNavigate();
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
@@ -24,6 +20,16 @@ const Header = () => {
   const onClose = () => {
     setOpen(false);
   };
+  const itemsDropdown = [
+    {
+      key: "1",
+      label: <Link to="#">Hồ sơ</Link>,
+    },
+    {
+      key: "2",
+      label: <Link to="/checkout">Đơn mua</Link>,
+    },
+  ];
   const menuItems = [
     {
       key: 1,
@@ -35,7 +41,19 @@ const Header = () => {
     },
     {
       key: 3,
-      label: token ? user.username : <Login />,
+      label: token ? (
+        <Dropdown
+          menu={{
+            items: itemsDropdown,
+          }}
+          placement="bottomLeft"
+          arrow
+        >
+          <Link to={"/"}>{user?.username}</Link>
+        </Dropdown>
+      ) : (
+        <Login />
+      ),
     },
     {
       key: 4,

@@ -4,6 +4,7 @@ import BaseLayout from "../layout/BaseLayout";
 import BlockProduct from "../Components/Product/BlockProduct";
 import Cart from "../pages/Cart";
 import ProductDetail from "../Components/Product/ProductDetail";
+import Checkout from "../pages/Checkout";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
     ],
   },

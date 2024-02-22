@@ -8,7 +8,10 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 const { VITE_BASE_URL } = import.meta.env;
 const Home = () => {
   const { data: data } = useFetch("/homepage");
-  const { data: menu } = useFetch("/dropdown-tabs");
+  const { data: menu } = useFetch(
+    "/dropdown-tabs",
+    "populate[0]=bannerFeatures&populate[1]=section.image&populate[2]=section.link"
+  );
   let listImage = data?.attributes?.leftBanner?.data.map((item) => {
     return {
       original: VITE_BASE_URL + item?.attributes?.url,
@@ -29,13 +32,20 @@ const Home = () => {
       items?.id * 0.13,
       Parser(items?.attributes?.icon),
       items?.attributes?.section.map((i) => {
-        return getItem(i?.title, i?.id * 0.3);
+        return getItem(
+          i?.title,
+          i?.id * 0.31,
+          null,
+          i?.link.map((item) => {
+            return getItem(item?.label, item?.id * 0.511);
+          })
+        );
       })
     );
   });
   return (
     <>
-      <Row style={{marginTop: 20,padding:10}}>
+      <Row gutter={[15, 0]} style={{ marginTop: 20, padding: 10 }}>
         <Col xs={0} xl={4}>
           <Menu
             className="menu"
@@ -96,7 +106,10 @@ const Home = () => {
         })}
       </Row>
       <ProductList title="Sản phẩm mới" />
-      <ProductList title="Lap top gaming" query="filters[idCategories][slug]=laptop-gaming"/>
+      <ProductList
+        title="Lap top gaming"
+        query="filters[idCategories][slug]=laptop-gaming"
+      />
     </>
   );
 };
