@@ -29,6 +29,10 @@ const Header = () => {
       key: "2",
       label: <Link to="/checkout">Đơn mua</Link>,
     },
+    {
+      key: "3",
+      label: <Link to="/list-order">Lịch sử mua</Link>,
+    },
   ];
   const menuItems = [
     {

@@ -76,8 +76,8 @@ const ProductTable = (props) => {
       responsive: ["md"],
       render: (item) => (
         <div>
-          <span className="old-price">{convertToCurrency(item.oldPrice)}</span>{" "}
-          - <span className="price">{convertToCurrency(item.price)}</span>
+          <span className="old-price">{convertToCurrency(item?.oldPrice)}</span>{" "}
+          - <span className="price">{convertToCurrency(item?.price)}</span>
         </div>
       ),
     },

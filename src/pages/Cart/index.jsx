@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import { useFetch } from "@/customHook/useFetching";
 import "@/style/cart.scss";
-import ProductTable from "../../Components/Product/ProductTable";
+import ProductTable from "@/Components/Product/ProductTable";
 const Cart = () => {
   const productList = useSelector((state) => state.cart.productList);
   const nav = useNavigate();
@@ -35,6 +35,7 @@ const Cart = () => {
           edit: true,
           buttonCTA: (
             <Button
+              disabled={!dataSource?.length}
               onClick={() => {
                 nav("/checkout");
               }}

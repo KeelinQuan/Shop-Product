@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import thunk from "./thunk";
 const initialState = {
   token: "",
   user: {},
@@ -14,8 +15,10 @@ export const authSlice = createSlice({
     logoutRedux: (state) => {
       state.token = "";
       state.user = {};
+      state.loading = false;
     },
   },
+  extraReducers: thunk,
 });
 export const { loginRedux, logoutRedux } = authSlice.actions;
 export default authSlice.reducer;

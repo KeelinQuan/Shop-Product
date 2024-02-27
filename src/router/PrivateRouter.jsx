@@ -1,9 +1,9 @@
+import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 export default function PrivateRouter(props) {
-  var user = localStorage.getItem("user");
-//   var roleOfUser = user?.role?.name;
-  console.log(">>role", roleOfUser);
+  var user = useSelector((state) => state.auth.user);
+  var roleOfUser = user?.role?.name;
 
   switch (props.role) {
     case "AuthenticatedCheck":

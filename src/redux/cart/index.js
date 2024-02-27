@@ -32,12 +32,15 @@ export const cartSlice = createSlice({
     },
     removeItem: (state, actions) => {
       const id = actions.payload;
-      state.productList=  state.productList?.filter((item) => {
+      state.productList = state.productList?.filter((item) => {
         return item.id !== id;
       });
-    
+    },
+    clearItem: (state) => {
+      state.productList = [];
     },
   },
 });
-export const { addItem, setQuantityItem, removeItem } = cartSlice.actions;
+export const { addItem, setQuantityItem, removeItem, clearItem } =
+  cartSlice.actions;
 export default cartSlice.reducer;

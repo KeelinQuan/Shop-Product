@@ -1,8 +1,7 @@
-import { FilterOutlined } from "@ant-design/icons";
+import { FilterOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { Button, Row, Col, Input, Select, Form } from "antd";
 import { useFetch } from "@/customhook/useFetching";
 import { useSearchParams } from "react-router-dom";
-import SearchComponent from "../Search/SearchComponent";
 const FilterProduct = (props) => {
   const {
     name,
@@ -28,6 +27,8 @@ const FilterProduct = (props) => {
   }));
   const [form] = Form.useForm();
   const [query, setQuery] = useSearchParams();
+
+  //hứng query trên url
   const getQueryToObj = () => {
     let resual = {};
     query.forEach((value, key) => {
@@ -35,6 +36,7 @@ const FilterProduct = (props) => {
     });
     return resual;
   };
+  //thêm query vào url
   const handleChangeBrand = (value) => {
     setName(value);
     let queryObj = getQueryToObj();
@@ -84,84 +86,102 @@ const FilterProduct = (props) => {
 
   return (
     <>
-      <div style={{ marginBottom: "16px" }}>
-        <h3 className="fw-bold mb-4">
-          <FilterOutlined />
-          Filter Products
-          <FilterOutlined />
-        </h3>
-        <Row gutter={[40, 0]}>
+      <div className="px-3">
+        <Row justify={"center"}>
           <Col>
-            <Row gutter={[15, 0]}>
-              <Col>
-                <Select
-                  onClear={handleChangeDelete}
-                  style={{ width: "140px" }}
-                  placeholder="Hãng sản xuất"
-                  onChange={(value) => {
-                    handleChangeBrand(value);
-                  }}
-                  value={name}
-                  options={listBrand}
-                />
-              </Col>
-              <Col>
-                <Select
-                  onClear={handleChangeDelete}
-                  style={{ width: "200px" }}
-                  placeholder="Danh mục sản phẩm"
-                  onChange={(value) => {
-                    handleChangeCategori(value);
-                  }}
-                  value={categories}
-                  options={listCategori}
-                />
-              </Col>
-              <Col>
-                <Select
-                  onClear={handleChangeDelete}
-                  onChange={(value) => {
-                    handleChangePrice(value);
-                  }}
-                  style={{ width: "150px" }}
-                  placeholder="Sắp xếp theo giá"
-                  value={sortPrice}
-                  options={[
-                    {
-                      label: "Giá tăng dần",
-                      value: "asc",
-                    },
-                    {
-                      label: "Giá giảm dần",
-                      value: "desc",
-                    },
-                  ]}
-                />
-              </Col>
-            </Row>
+            <h3>
+              <FilterOutlined />
+              Filter Products
+              <FilterOutlined />
+            </h3>
           </Col>
+        </Row>
 
+        <h5>Lọc sản phẩm</h5>
+        <Row justify={"space-between"} className="mt-3 mb-2">
+          <Col xs={12} md={12}>
+            <Select
+              onClear={handleChangeDelete}
+              style={{ width: "200px" }}
+              placeholder="Hãng sản xuất"
+              onChange={(value) => {
+                handleChangeBrand(value);
+              }}
+              value={name}
+              options={listBrand}
+            />
+          </Col>
+          <Col xs={12} md={12}>
+            <Select
+              onClear={handleChangeDelete}
+              style={{ width: "200px" }}
+              placeholder="Danh mục sản phẩm"
+              onChange={(value) => {
+                handleChangeCategori(value);
+              }}
+              value={categories}
+              options={listCategori}
+            />
+          </Col>
+        </Row>
+        <h5>Sắp xếp theo giá</h5>
+        <Row className="mt-3 mb-2">
+          <Col>
+            <Select
+              onClear={handleChangeDelete}
+              onChange={(value) => {
+                handleChangePrice(value);
+              }}
+              style={{ width: "200px" }}
+              placeholder="Sắp xếp"
+              value={sortPrice}
+              options={[
+                {
+                  label: "Giá tăng dần",
+                  value: "asc",
+                },
+                {
+                  label: "Giá giảm dần",
+                  value: "desc",
+                },
+              ]}
+            />
+          </Col>
+        </Row>
+        <h5>Lọc theo giá tiền</h5>
+        <Row className="mt-3 mb-2">
           <Col>
             <Form form={form} onFinish={handleChangeMinMaxPrice}>
-              <Form.Item name="min">
-                <Input placeholder="Giá min" />
-              </Form.Item>
-              <Form.Item name="max">
-                <Input placeholder="Giá max" />
-              </Form.Item>
+              <Row justify={"center"}>
+                <Col xs={11} md={11}>
+                  <Form.Item name="min">
+                    <Input placeholder="Min" />
+                  </Form.Item>
+                </Col>
+                <Col xs={1} md={1}>
+                  <ArrowRightOutlined />
+                </Col>
+                <Col xs={12} md={12}>
+                  <Form.Item name="max">
+                    <Input placeholder="Max" />
+                  </Form.Item>
+                </Col>
+              </Row>
               <Button htmlType="submit">Lọc</Button>
             </Form>
           </Col>
         </Row>
 
-        <Button onClick={handleChangeDelete}>Reset All</Button>
-        <div className="search-result">
-          {search ? (
-            <h1>Tìm kiếm: {search}</h1>
-          ) : name ? (
-            <h1> Sản phẩm: {name}</h1>
-          ) : null}
-        </div>
+        <Button className="mt-3" onClick={handleChangeDelete}>
+          Reset All
+        </Button>
+      </div>
+      <div className="search-result">
+        {search ? (
+          <h1>Tìm kiếm: {search}</h1>
+        ) : name ? (
+          <h1> Sản phẩm: {name}</h1>
+        ) : null}
       </div>
     </>
   );

@@ -36,7 +36,7 @@ const BlockProduct = () => {
   return (
     <>
       <Row>
-        <Col>
+        <Col xs={24} md={8}>
           <FilterProduct
             name={name}
             setName={setName}
@@ -50,7 +50,7 @@ const BlockProduct = () => {
             setChildData={setChildData}
           />
         </Col>
-        <Col >
+        <Col xs={24} md={16}>
           <ProductList query={queryFilterTxt} setQuery={setQuery} />
         </Col>
       </Row>

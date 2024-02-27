@@ -1,5 +1,5 @@
 import { Modal, Input, Form, Button } from "antd";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { emailRule, passwordRule } from "@/common/rules";
 import { loginRedux } from "@/redux/auth";
 import "@/style/modal.scss";
@@ -25,7 +25,6 @@ const Login = () => {
       setIsShowModal(false);
     } catch (error) {
       console.log(error);
-
       errorNotify("topRight", "Đăng nhập thất bại", "Không thành công");
     }
   };
