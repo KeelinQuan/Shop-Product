@@ -24,6 +24,7 @@ export function useFetch(url, query = "", initPageSize = 12) {
         setData(res?.data?.data);
         setPaging({ ...res.data?.meta?.pagination });
         setFilter(res?.data?.data);
+        setLoading(false);
       })
       .catch((err) => {})
       .finally(() => {

@@ -7,6 +7,7 @@ import ProductDetail from "../Components/Product/ProductDetail";
 import Checkout from "../pages/Checkout";
 import OrderDetail from "../pages/Order/OrderDetail";
 import OrderList from "../pages/Order/OrderList";
+import PrivateRouter from "./PrivateRouter";
 
 export const router = createBrowserRouter([
   {
@@ -35,15 +36,27 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout",
-        element: <Checkout />,
+        element: (
+          <PrivateRouter>
+            <Checkout />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/order/:id",
-        element: <OrderDetail />,
+        element: (
+          <PrivateRouter>
+            <OrderDetail />,
+          </PrivateRouter>
+        ),
       },
       {
         path: "/list-order",
-        element: <OrderList />,
+        element: (
+          <PrivateRouter>
+            <OrderList />
+          </PrivateRouter>
+        ),
       },
     ],
   },

@@ -1,4 +1,4 @@
-import { Row, Col, Form, Input, Button } from "antd";
+import { Row, Col, Form, Input, Button, Skeleton } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductTable from "@/Components/Product/ProductTable";
@@ -20,7 +20,7 @@ const Checkout = () => {
     return txt + `filters[id][$in][${index}]=${item.id}&`;
   }, "");
 
-  let { data } = useFetch(`/products`, query);
+  let { data, loading } = useFetch(`/products`, query);
   data = productList?.length ? data : [];
   let dataSource = data?.map((item) => {
     let productFinded = productList.find((product) => product?.id === item?.id);
@@ -75,6 +75,38 @@ const Checkout = () => {
       errorNotify("topRight", "Tạo đơn thất bại", "Không thành công");
     }
   };
+  let loadingElement = (
+    <>
+      <Row gutter={[15, 15]} justify="space-between">
+        <Col span={24}>
+          <Skeleton.Image active />
+          <Skeleton.Input active />
+          <Skeleton title active />
+        </Col>
+      </Row>
+      <Row gutter={[15, 15]} justify="space-between">
+        <Col span={24}>
+          <Skeleton.Image active />
+          <Skeleton.Input active />
+          <Skeleton title active />
+        </Col>
+      </Row>
+      <Row gutter={[15, 15]} justify="space-between">
+        <Col span={24}>
+          <Skeleton.Image active />
+          <Skeleton.Input active />
+          <Skeleton title active />
+        </Col>
+      </Row>
+      <Row gutter={[15, 15]} justify="space-between">
+        <Col span={24}>
+          <Skeleton.Image active />
+          <Skeleton.Input active />
+          <Skeleton title active />
+        </Col>
+      </Row>
+    </>
+  );
   return (
     <div>
       {contextHolder}
@@ -114,22 +146,26 @@ const Checkout = () => {
           <Button onClick={saveInfo}>Lưu</Button>
         </Col>
       </Row>
-      <ProductTable
-        dataSource={dataSource}
-        options={{
-          edit: false,
-          buttonCTA: (
-            <Button
-              disabled={!dataSource?.length}
-              onClick={() => {
-                form.submit();
-              }}
-            >
-              Đặt hàng
-            </Button>
-          ),
-        }}
-      />
+      {loading ? (
+        loadingElement
+      ) : (
+        <ProductTable
+          dataSource={dataSource}
+          options={{
+            edit: false,
+            buttonCTA: (
+              <Button
+                disabled={!dataSource?.length}
+                onClick={() => {
+                  form.submit();
+                }}
+              >
+                Đặt hàng
+              </Button>
+            ),
+          }}
+        />
+      )}
     </div>
   );
 };
