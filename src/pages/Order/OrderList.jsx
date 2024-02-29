@@ -58,7 +58,7 @@ const OrderList = () => {
   );
   return (
     <div>
-      <h1>Lịch sử mua hàng</h1>
+      <h1 className="px-3 text-primary">Lịch sử mua hàng</h1>
       {loading ? (
         loadingElement
       ) : (

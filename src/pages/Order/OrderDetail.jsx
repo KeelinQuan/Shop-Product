@@ -89,10 +89,10 @@ const OrderDetail = () => {
       ) : (
           <div>
             {statusOrderComponent}
-          <h1>Đơn hàng {param.id}</h1>
-          <Row>
+          <Row className="px-3">
+          <h1 className="text-danger">Đơn hàng: {param.id}</h1>
             <Col span={24}>
-              <h2>Thông tin người nhận</h2>
+              <h2 className="text-info">Thông tin người nhận</h2>
             </Col>
             <Col span={24}>
               <h4>Tên người nhận : {data?.attributes?.customerName}</h4>

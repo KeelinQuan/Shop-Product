@@ -8,6 +8,7 @@ import { logoutRedux } from "../redux/auth";
 import { ShoppingCartOutlined, MenuOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import SearchComponent from "../Components/Search/SearchComponent";
+import logo from "../assets/logo.png";
 const Header = () => {
   const user = useSelector((state) => state.auth.user);
   const token = useSelector((state) => state.auth.token);
@@ -111,7 +112,7 @@ const Header = () => {
       <Row justify={"space-between"} align={"middle"}>
         <Col xs={2} md={2} className="logo">
           <Link to="/">
-            <img src="/vite.svg" alt="" />
+            <img src={logo} alt="" />
           </Link>
         </Col>
         <Col xs={16} md={10}>

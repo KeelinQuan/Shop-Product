@@ -110,12 +110,12 @@ const Checkout = () => {
   return (
     <div>
       {contextHolder}
-      <Row>
+      <Row className="px-3">
         <Col>
           <h3>Tài khoản: {user.username} </h3>
         </Col>
       </Row>
-      <Row>
+      <Row className="px-3">
         <Col xs={24} md={24}>
           <Form
             form={form}
@@ -140,7 +140,7 @@ const Checkout = () => {
           </Form>
         </Col>
       </Row>
-      <Row className="mt-3 mb-3">
+      <Row className="mt-3 mb-3 px-3">
         <Col>
           <h3>Lưu thông tin mua hàng cho lần sau</h3>
           <Button onClick={saveInfo}>Lưu</Button>

@@ -102,7 +102,7 @@ const FilterProduct = (props) => {
           <Col xs={12} md={12}>
             <Select
               onClear={handleChangeDelete}
-              style={{ width: "200px" }}
+              style={{ width: "180px" }}
               placeholder="Hãng sản xuất"
               onChange={(value) => {
                 handleChangeBrand(value);
@@ -114,7 +114,7 @@ const FilterProduct = (props) => {
           <Col xs={12} md={12}>
             <Select
               onClear={handleChangeDelete}
-              style={{ width: "200px" }}
+              style={{ width: "180px" }}
               placeholder="Danh mục sản phẩm"
               onChange={(value) => {
                 handleChangeCategori(value);
@@ -132,7 +132,7 @@ const FilterProduct = (props) => {
               onChange={(value) => {
                 handleChangePrice(value);
               }}
-              style={{ width: "200px" }}
+              style={{ width: "180px" }}
               placeholder="Sắp xếp"
               value={sortPrice}
               options={[
@@ -176,11 +176,11 @@ const FilterProduct = (props) => {
           Reset All
         </Button>
       </div>
-      <div className="search-result">
+      <div className="search-result px-3">
         {search ? (
-          <h1>Tìm kiếm: {search}</h1>
+          <h1 className="text-info">Tìm kiếm: {search}</h1>
         ) : name ? (
-          <h1> Sản phẩm: {name}</h1>
+          <h1 className="text-info"> Sản phẩm: {name}</h1>
         ) : null}
       </div>
     </>

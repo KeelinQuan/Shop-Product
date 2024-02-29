@@ -163,7 +163,7 @@ const ProductDetail = () => {
             </Col>
           </Row>
           <div className="content-body">
-            <h1>Mô tả sản phẩm:</h1>
+            <h1 className="text-primary">Mô tả sản phẩm:</h1>
             <Markdown>{contentBody}</Markdown>
           </div>
           <ProductList
@@ -185,7 +185,6 @@ const ProductDetail = () => {
             "Không có sản phẩm nào cùng hãng"
           )}
         </Col>
-    
       </Row>
     </>
   );
