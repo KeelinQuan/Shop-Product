@@ -1,8 +1,8 @@
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import { useFetch } from "../customhook/useFetching";
+import { useFetch } from "@/customhook/useFetching";
 import { Col, Row, Menu } from "antd";
-import ProductList from "../Components/Product/ProductList";
+import ProductList from "@/Components/Product/ProductList";
 import Parser from "html-react-parser";
 import "bootstrap-icons/font/bootstrap-icons.css";
 const { VITE_BASE_URL } = import.meta.env;

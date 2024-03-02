@@ -1,0 +1,299 @@
+/* Link ảnh Zalo : https://classic.vn/wp-content/uploads/2022/07/zalo-icon.png */
+/* Link ảnh Phone: https://classic.vn/wp-content/uploads/2022/07/phone-icon-800x800.png */
+
+/* PHONE */
+hotline-phone-ring-wrap {
+  left: 20px;
+  bottom: 20px;
+}
+.hotline-phone-ring-wrap {
+  position: fixed;
+  bottom: 10px;
+  right: 0;
+  z-index: 999999;
+}
+
+/* Chỉnh sửa vị trí position hotline-phone-ring*/
+.hotline-phone-ring {
+  position: relative;
+  visibility: visible;
+  background-color: transparent;
+  width: 110px;
+  height: 110px;
+  cursor: pointer;
+  z-index: 11;
+  transition: visibility 0.5s;
+  /* vị trí */
+  left: 0;
+  bottom: 70px;
+  display: block;
+}
+hotline-phone-ring-circle {
+  border-color: #ed5228;
+}
+.hotline-phone-ring-circle {
+  width: 110px;
+  height: 110px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: transparent;
+  border-radius: 100%;
+  border: 2px solid #ed5228;
+  -webkit-animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
+  animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
+  transition: all 0.5s;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  opacity: 0.5;
+}
+
+.hotline-phone-ring-circle-fill,
+.hotline-phone-ring-img-circle,
+.hotline-bar {
+  background-color: #ed5228;
+}
+.hotline-phone-ring-circle-fill {
+  width: 80px;
+  height: 80px;
+  top: 16px;
+  left: 16px;
+  position: absolute;
+  background-color: rgba(237, 82, 40, 0.7);
+  border-radius: 100%;
+  border: 2px solid transparent;
+  -webkit-animation: phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
+  animation: phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
+  transition: all 0.5s;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+.hotline-phone-ring-circle-fill,
+.hotline-phone-ring-img-circle,
+.hotline-bar {
+  background-color: #ed5228;
+}
+.hotline-phone-ring-img-circle {
+  background-color: #ed5228;
+  width: 50px;
+  height: 50px;
+  top: 31px;
+  left: 31px;
+  position: absolute;
+  background-size: 20px;
+  border-radius: 100%;
+  border: 2px solid transparent;
+  -webkit-animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
+  animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pps-btn-img {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.image-phone {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border: 0;
+  display: block;
+}
+
+/* ZALO */
+hotline-zalo-ring-wrap {
+  left: 20px;
+  bottom: 20px;
+}
+.hotline-zalo-ring-wrap {
+  position: fixed;
+  bottom: 10px;
+  right: 0;
+  z-index: 999999;
+}
+
+/* Chỉnh sửa vị trí position hotline-zalo-ring*/
+.hotline-zalo-ring {
+  position: relative;
+  visibility: visible;
+  background-color: transparent;
+  width: 110px;
+  height: 110px;
+  cursor: pointer;
+  z-index: 11;
+  transition: visibility 0.5s;
+  /* vị trí */
+  left: 0;
+  bottom: 160px;
+  display: block;
+}
+hotline-zalo-ring-circle {
+  border-color: #028fe3;
+}
+.hotline-zalo-ring-circle {
+  width: 110px;
+  height: 110px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: transparent;
+  border-radius: 100%;
+  border: 2px solid #028fe3;
+  -webkit-animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
+  animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
+  transition: all 0.5s;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  opacity: 0.5;
+}
+
+.hotline-zalo-ring-circle-fill {
+  width: 80px;
+  height: 80px;
+  top: 16px;
+  left: 16px;
+  position: absolute;
+  background-color: rgba(2, 143, 227, 0.7);
+  border-radius: 100%;
+  border: 2px solid transparent;
+  -webkit-animation: zaloring-alo-circle-fill-anim 2.3s infinite ease-in-out;
+  animation: phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
+  transition: all 0.5s;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+.hotline-zalo-ring-circle-fill,
+.hotline-zalo-ring-img-circle,
+.hotline-bar {
+  background-color: #028fe3;
+}
+.hotline-zalo-ring-img-circle {
+  background-color: #028fe3;
+  width: 50px;
+  height: 50px;
+  top: 31px;
+  left: 31px;
+  position: absolute;
+  background-size: 20px;
+  border-radius: 100%;
+  border: 2px solid transparent;
+  -webkit-animation: zaloring-alo-circle-img-anim 1s infinite ease-in-out;
+  animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pps-btn-img {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.image-zalo {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border: 0;
+  display: block;
+}
+
+.show-phone-number {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  z-index: -1;
+  line-height: 40px;
+  height: 40px;
+  right: 0px;
+  padding: 0px 25px 0px 15px;
+  background: rgba(237, 82, 40, 0.7);
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  border-radius: 10px;
+  font-size: 24px;
+  color: whitesmoke;
+  font-weight: bold;
+  transition: 0.5s;
+}
+.hotline-phone-ring-wrap:hover .show-phone-number {
+  opacity: 1;
+  right: calc(100% - 50px);
+}
+/* ANIMATION ALL */
+@keyframes phonering-alo-circle-anim {
+  0% {
+    -webkit-transform: rotate(0) scale(0.5) skew(1deg);
+    -webkit-opacity: 0.1;
+  }
+  30% {
+    -webkit-transform: rotate(0) scale(0.7) skew(1deg);
+    -webkit-opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: rotate(0) scale(1) skew(1deg);
+    -webkit-opacity: 0.1;
+  }
+}
+
+@keyframes phonering-alo-circle-fill-anim {
+  0% {
+    -webkit-transform: rotate(0) scale(0.7) skew(1deg);
+    opacity: 0.6;
+  }
+  50% {
+    -webkit-transform: rotate(0) scale(1) skew(1deg);
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: rotate(0) scale(0.7) skew(1deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes phonering-alo-circle-img-anim {
+  0% {
+    -webkit-transform: rotate(0) scale(1) skew(1deg);
+  }
+  10% {
+    -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  20% {
+    -webkit-transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  30% {
+    -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  40% {
+    -webkit-transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  50% {
+    -webkit-transform: rotate(0) scale(1) skew(1deg);
+  }
+  100% {
+    -webkit-transform: rotate(0) scale(1) skew(1deg);
+  }
+}

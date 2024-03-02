@@ -2,13 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Menu, Row, Col, Drawer, Badge, Dropdown } from "antd";
-import Login from "../pages/Authentication/Login";
-import Register from "../pages/Authentication/Register";
-import { logoutRedux } from "../redux/auth";
+import Login from "@/pages/Authentication/Login";
+import Register from "@/pages/Authentication/Register";
+import { logoutRedux } from "@/redux/auth";
 import { ShoppingCartOutlined, MenuOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import SearchComponent from "../Components/Search/SearchComponent";
-import logo from "../assets/logo.png";
+import SearchComponent from "@/Components/Search/SearchComponent";
+import logo from "@/assets/logo.png";
 const Header = () => {
   const user = useSelector((state) => state.auth.user);
   const token = useSelector((state) => state.auth.token);
@@ -54,7 +54,9 @@ const Header = () => {
           placement="bottomLeft"
           arrow
         >
-          <Link to={"/"}>{user?.username}</Link>
+          <Link to={"/"} style={{ fontWeight: "bold", fontSize: "18px" }}>
+            {user?.username}
+          </Link>
         </Dropdown>
       ) : (
         <Login />
