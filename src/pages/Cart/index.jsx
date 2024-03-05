@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { Button, Skeleton, Row, Col } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { Button, Skeleton, Row, Col, Breadcrumb } from "antd";
 import { useFetch } from "@/customHook/useFetching";
 import "@/style/cart.scss";
 import ProductTable from "@/Components/Product/ProductTable";
@@ -59,30 +59,41 @@ const Cart = () => {
       </Row>
     </>
   );
+  let breadcrumbItems = [
+    {
+      title: <Link to="/">Trang chủ</Link>,
+    },
+    {
+      title: <Link to="#">Giỏ hàng</Link>,
+    },
+  ];
   return (
     <>
       {loading ? (
         loadingElement
       ) : (
-        <ProductTable
-          dataSource={dataSource}
-          options={{
-            edit: true,
-            buttonCTA: (
-              <Button
-                disabled={!dataSource?.length}
-                onClick={() => {
-                  nav("/checkout");
-                  if (!token) {
-                    alert("Bạn chưa đăng nhập");
-                  }
-                }}
-              >
-                Thanh toán
-              </Button>
-            ),
-          }}
-        />
+        <div className="px-3">
+          <Breadcrumb items={breadcrumbItems} style={{paddingBottom:'15px'}} />
+          <ProductTable
+            dataSource={dataSource}
+            options={{
+              edit: true,
+              buttonCTA: (
+                <Button
+                  disabled={!dataSource?.length}
+                  onClick={() => {
+                    nav("/checkout");
+                    if (!token) {
+                      alert("Bạn chưa đăng nhập");
+                    }
+                  }}
+                >
+                  Thanh toán
+                </Button>
+              ),
+            }}
+          />
+        </div>
       )}
     </>
   );

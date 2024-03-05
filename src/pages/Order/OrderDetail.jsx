@@ -1,8 +1,8 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useFetch } from "@/customhook/useFetching";
 import ProductTable from "@/Components/Product/ProductTable";
-import { Col, Row, Skeleton ,Steps} from "antd";
+import { Breadcrumb, Col, Row, Skeleton, Steps } from "antd";
 const OrderDetail = () => {
   const param = useParams();
   let { data, loading } = useFetch(`/orders/${param.id}`);
@@ -42,55 +42,67 @@ const OrderDetail = () => {
       </Row>
     </>
   );
-  let statusOrderComponent = null
+  let statusOrderComponent = null;
   switch (data?.attributes?.status) {
-      case 'new':
-          statusOrderComponent = 0;
-          break;
-      case 'confirmed':
-          statusOrderComponent = 1;
-          break;
-      case 'done': 
-          statusOrderComponent = 2;
-          break;
-      case 'cancelled': 
-          statusOrderComponent = <h1>Đơn hàng đã bị chủ Shop huỷ</h1>
-          break;
-      case 'boom':
-          statusOrderComponent = <h1>Đơn hàng đã bị Khách hàng huỷ</h1>
-          break;
-      default:
-          statusOrderComponent = <h1>Đơn hàng chưa được cập nhật trạng thái</h1>
-          break;
+    case "new":
+      statusOrderComponent = 0;
+      break;
+    case "confirmed":
+      statusOrderComponent = 1;
+      break;
+    case "done":
+      statusOrderComponent = 2;
+      break;
+    case "cancelled":
+      statusOrderComponent = <h1>Đơn hàng đã bị chủ Shop huỷ</h1>;
+      break;
+    case "boom":
+      statusOrderComponent = <h1>Đơn hàng đã bị Khách hàng huỷ</h1>;
+      break;
+    default:
+      statusOrderComponent = <h1>Đơn hàng chưa được cập nhật trạng thái</h1>;
+      break;
   }
 
-  if(typeof statusOrderComponent == 'number'){
-      statusOrderComponent = (
-          <Steps
-              current={statusOrderComponent}
-              items={[
-              {
-                  title: 'Đơn mới',
-              },
-              {
-                  title: 'Đã xác nhận',
-              },
-              {
-                  title: 'Hoan thanh',
-              }
-              ]}
-          />
-      )
+  if (typeof statusOrderComponent == "number") {
+    statusOrderComponent = (
+      <Steps
+        current={statusOrderComponent}
+        items={[
+          {
+            title: "Đơn mới",
+          },
+          {
+            title: "Đã xác nhận",
+          },
+          {
+            title: "Hoan thanh",
+          },
+        ]}
+      />
+    );
   }
+  let breadcrumbItems = [
+    {
+      title: <Link to="/">Trang chủ</Link>,
+    },
+    {
+      title: <Link to="/list-order">Đơn hàng</Link>,
+    },
+    {
+      title: <Link to="#">{param.id}</Link>,
+    },
+  ];
   return (
     <>
       {loading ? (
         loadingElement
       ) : (
-          <div>
-            {statusOrderComponent}
-          <Row className="px-3">
-          <h1 className="text-danger">Đơn hàng: {param.id}</h1>
+        <div  className="px-3">
+          <Breadcrumb items={breadcrumbItems} style={{paddingBottom:15}} />
+          {statusOrderComponent}
+          <Row>
+            <h1 className="text-danger">Đơn hàng: {param.id}</h1>
             <Col span={24}>
               <h2 className="text-info">Thông tin người nhận</h2>
             </Col>

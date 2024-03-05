@@ -1,7 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ProductTable from "@/Components/Product/ProductTable";
-import { Button, Col, Row, Skeleton } from "antd";
+import { Breadcrumb, Button, Col, Row, Skeleton } from "antd";
 import { useFetch } from "@/customHook/useFetching";
 
 const OrderList = () => {
@@ -56,9 +56,18 @@ const OrderList = () => {
       </Row>
     </>
   );
+  let breadcrumbItems = [
+    {
+      title: <Link to="/">Trang chủ</Link>,
+    },
+    {
+      title: <Link to="#">Đơn hàng</Link>,
+    },
+  ];
   return (
-    <div>
-      <h1 className="px-3 text-primary">Lịch sử mua hàng</h1>
+    <div className="px-3">
+      <h1 className="text-primary">Lịch sử mua hàng</h1>
+      <Breadcrumb items={breadcrumbItems} style={{ paddingBottom: 15 }} />
       {loading ? (
         loadingElement
       ) : (

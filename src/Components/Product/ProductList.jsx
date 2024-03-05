@@ -81,7 +81,7 @@ const ProductList = (props) => {
     return (
       <>
         <Row>
-          <h1>{title}</h1>
+          <h1 className="py-2">{title}</h1>
         </Row>
         <Row gutter={[20, 40]} style={{ flexDirection: type }}>
           {data?.map((item, index) => {
@@ -91,13 +91,14 @@ const ProductList = (props) => {
               : "";
 
             return (
-              <Col sm={24} md={type=='column' ? 24 : 6} key={index}>
+              <Col sm={24} md={type == "column" ? 24 : 6} key={index}>
                 <Link to={`/detail/${item.attributes?.slug}`}>
                   <Card
                     hoverable
                     key={item?.id}
-                    cover={<LazyLoadImage style={{width: '100%'}} src={imgUrl} />}
-                    
+                    cover={
+                      <LazyLoadImage style={{ width: "100%" }} src={imgUrl} />
+                    }
                   >
                     <Meta
                       style={{ marginBottom: "10px" }}

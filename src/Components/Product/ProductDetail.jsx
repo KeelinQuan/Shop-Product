@@ -1,8 +1,8 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useFetch } from "@/customhook/useFetching";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import { Col, Row, Button, InputNumber, Form } from "antd";
+import { Col, Row, Button, InputNumber, Form, Breadcrumb } from "antd";
 import { convertToCurrency } from "@/utils/convertPrice";
 import "@/style/detail.scss";
 import Markdown from "react-markdown";
@@ -79,9 +79,24 @@ const ProductDetail = () => {
       );
     }, time * 1000);
   };
+
+  let breadcrumbItems = [
+    {
+      title: <Link to="/">Trang chủ</Link>,
+    },
+    {
+      title: <Link to="/product">Sản phẩm</Link>,
+    },
+    {
+      title: <Link to={`#`}>{data?.attributes?.name}</Link>,
+    },
+  ];
   return (
     <>
       <Row gutter={[50, 20]} className="product">
+        <Col span={24}>
+          <Breadcrumb items={breadcrumbItems} />
+        </Col>
         <Col xs={24} md={18}>
           <Row gutter={[40, 20]}>
             <Col xs={24} md={12}>
@@ -106,7 +121,8 @@ const ProductDetail = () => {
 
               {brand ? (
                 <div>
-                  <span className="label-field">Thương hiệu: </span> {brand}
+                  <span className="label-field">Thương hiệu: </span>{" "}
+                  <Link to={"/tim?"}>{brand}</Link>
                 </div>
               ) : null}
               {data?.attributes?.cpu ? (

@@ -8,12 +8,16 @@ import "./config/axios.js";
 import { PersistGate } from "redux-persist/integration/react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/index.jsx";
+import { Suspense } from "react";
+import lazyLoading from "@/assets/loading-lazyload.png";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <RouterProvider router={router} />
+        <Suspense fallback={<img src={lazyLoading} className="lazyload-img"/>}>
+          <RouterProvider router={router} />
+        </Suspense>
       </PersistGate>
     </Provider>
   </React.StrictMode>

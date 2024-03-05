@@ -105,7 +105,7 @@ const Home = () => {
           );
         })}
       </Row>
-      <ProductList title="Sản phẩm mới" />
+      <ProductList title="Sản phẩm mới"/>
       <ProductList
         title="Lap top gaming"
         query="filters[idCategories][slug]=laptop-gaming"

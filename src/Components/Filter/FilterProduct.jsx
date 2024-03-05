@@ -1,7 +1,7 @@
 import { FilterOutlined, ArrowRightOutlined } from "@ant-design/icons";
-import { Button, Row, Col, Input, Select, Form } from "antd";
+import { Button, Row, Col, Input, Select, Form, Breadcrumb } from "antd";
 import { useFetch } from "@/customhook/useFetching";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 const FilterProduct = (props) => {
   const {
     name,
@@ -83,6 +83,20 @@ const FilterProduct = (props) => {
     form.resetFields();
     setQuery("");
   };
+  let breadcrumbItems = [
+    {
+      title: <Link to="/">Trang chủ</Link>,
+    },
+  ];
+  if (window.location.href.includes("product")) {
+    breadcrumbItems.push({
+      title: <Link to="#">Sản phẩm</Link>,
+    });
+  } else {
+    breadcrumbItems.push({
+      title: <Link to="#">Tìm kiếm</Link>,
+    });
+  }
 
   return (
     <>
@@ -94,6 +108,9 @@ const FilterProduct = (props) => {
               Filter Products
               <FilterOutlined />
             </h3>
+          </Col>
+          <Col span={24} style={{ paddingBottom: "10px" }}>
+            <Breadcrumb items={breadcrumbItems} />
           </Col>
         </Row>
 

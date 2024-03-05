@@ -1,10 +1,10 @@
-import { Row, Col, Form, Input, Button, Skeleton } from "antd";
+import { Row, Col, Form, Input, Button, Skeleton, Breadcrumb } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductTable from "@/Components/Product/ProductTable";
 import { useFetch } from "@/customHook/useFetching";
 import { clearItem } from "@/redux/cart";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { saveUserThunk } from "@/redux/auth/thunk";
 import { addOrder } from "@/services/order";
 import useNotification from "@/customhook/useNotify";
@@ -107,10 +107,21 @@ const Checkout = () => {
       </Row>
     </>
   );
+  let breadcrumbItems = [
+    {
+      title: <Link to="/">Trang chủ</Link>,
+    },
+    {
+      title: <Link to="#">Thanh toán</Link>,
+    },
+  ];
   return (
     <div>
       {contextHolder}
       <Row className="px-3">
+        <Col span={24} style={{ paddingBottom: 15 }}>
+          <Breadcrumb items={breadcrumbItems} />
+        </Col>
         <Col>
           <h3>Tài khoản: {user.username} </h3>
         </Col>
