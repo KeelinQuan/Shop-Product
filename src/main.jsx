@@ -15,10 +15,17 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <Suspense fallback={<img src={lazyLoading} className="lazyload-img"/>}>
+        <Suspense
+          fallback={
+            <div className="img-loading">
+              <img className="img" src={lazyLoading} />
+            </div>
+          }
+        >
           <RouterProvider router={router} />
         </Suspense>
       </PersistGate>
     </Provider>
   </React.StrictMode>
 );
+

@@ -31,6 +31,12 @@
 a {
   text-decoration: none;
 }
+.img-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 // === phone down
 @media only screen and (max-width: $sm) {
@@ -45,5 +51,10 @@ a {
   }
   .content {
     padding: 20px 0;
+  }
+  .img-loading {
+    img {
+      width: 400px;
+    }
   }
 }

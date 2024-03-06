@@ -1,15 +1,15 @@
-import { createBrowserRouter } from "react-router-dom" ;
-import { lazy } from 'react';
+import { createBrowserRouter } from "react-router-dom";
+import { lazy } from "react";
 
-const Home = lazy(()=> import( "@/layout/Home" ));
-const BaseLayout = lazy(()=> import( "@/layout/BaseLayout" ));
-const BlockProduct = lazy(()=> import( "@/Components/Product/BlockProduct" ));
-const Cart = lazy(()=> import( "@/pages/Cart" ));
-const ProductDetail = lazy(()=> import( "@/Components/Product/ProductDetail" ));
-const Checkout = lazy(()=> import( "@/pages/Checkout" ));
-const OrderDetail = lazy(()=> import( "@/pages/Order/OrderDetail" ));
-const OrderList = lazy(()=> import( "@/pages/Order/OrderList" ));
-const PrivateRouter = lazy(()=> import( "./PrivateRouter" ));
+import BaseLayout from "@/layout/BaseLayout";
+const Home = lazy(() => import("@/layout/Home"));
+const BlockProduct = lazy(() => import("@/Components/Product/BlockProduct"));
+const Cart = lazy(() => import("@/pages/Cart"));
+const ProductDetail = lazy(() => import("@/Components/Product/ProductDetail"));
+const Checkout = lazy(() => import("@/pages/Checkout"));
+const OrderDetail = lazy(() => import("@/pages/Order/OrderDetail"));
+const OrderList = lazy(() => import("@/pages/Order/OrderList"));
+const PrivateRouter = lazy(() => import("./PrivateRouter"));
 
 export const router = createBrowserRouter([
   {
