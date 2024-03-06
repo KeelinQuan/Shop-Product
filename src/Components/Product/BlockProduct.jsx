@@ -3,6 +3,7 @@ import FilterProduct from "../Filter/FilterProduct";
 import ProductList from "./ProductList";
 import { useSearchParams } from "react-router-dom";
 import { Row, Col } from "antd";
+import { useSelector } from "react-redux";
 const BlockProduct = () => {
   const [name, setName] = useState();
   const [categories, setCategories] = useState();
@@ -13,7 +14,6 @@ const BlockProduct = () => {
   });
   const [childData, setChildData] = useState({});
   const [query, setQuery] = useSearchParams();
-
   var queryFilterTxt = "";
 
   let search = query.get("name");
@@ -33,6 +33,7 @@ const BlockProduct = () => {
   if (priceCondition.min && priceCondition.max) {
     queryFilterTxt += `&filters[price][$between][=${priceCondition.min}&filters[price][$between]=${priceCondition.max}`;
   }
+
   return (
     <>
       <Row>

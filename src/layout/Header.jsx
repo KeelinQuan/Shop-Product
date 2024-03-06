@@ -9,6 +9,7 @@ import { ShoppingCartOutlined, MenuOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import SearchComponent from "@/Components/Search/SearchComponent";
 import logo from "@/assets/logo.png";
+import { titleTxt } from "@/redux/title";
 const Header = () => {
   const user = useSelector((state) => state.auth.user);
   const token = useSelector((state) => state.auth.token);
@@ -28,7 +29,16 @@ const Header = () => {
     },
     {
       key: "2",
-      label: <Link to="/checkout">Đơn mua</Link>,
+      label: (
+        <Link
+          to="/checkout"
+          onClick={() => {
+            dispatch(titleTxt("Đơn hàng"));
+          }}
+        >
+          Đơn mua
+        </Link>
+      ),
     },
     {
       key: "3",
@@ -38,11 +48,29 @@ const Header = () => {
   const menuItems = [
     {
       key: 1,
-      label: <Link to="/">Trang chủ</Link>,
+      label: (
+        <Link
+          to="/"
+          onClick={() => {
+            dispatch(titleTxt("Trang chủ"));
+          }}
+        >
+          Trang chủ
+        </Link>
+      ),
     },
     {
       key: 2,
-      label: <Link to="/product">Sản phẩm</Link>,
+      label: (
+        <Link
+          to="/product"
+          onClick={() => {
+            dispatch(titleTxt("Sản phẩm"));
+          }}
+        >
+          Sản phẩm
+        </Link>
+      ),
     },
     {
       key: 3,

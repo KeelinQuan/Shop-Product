@@ -2,6 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import modalReducer from "./modal";
 import authReducer from "./auth";
 import cartReducer from "./cart";
+import titleReducer from "./title";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -10,11 +11,12 @@ const rootReducers = combineReducers({
   modal: modalReducer,
   auth: authReducer,
   cart: cartReducer,
+  title: titleReducer,
 });
 const persistConfig = {
   key: "root",
   storage, //lưu vào localstorege
-  whitelist: ["auth",'cart'],
+  whitelist: ["auth", "cart",'title'],
 };
 
 //quản lý lưu trữ và khôi phục

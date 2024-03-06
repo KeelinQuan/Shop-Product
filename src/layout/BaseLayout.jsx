@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Layout, ConfigProvider } from "antd";
 import HeaderComponent from "./Header";
 import "@/style/layout.scss";
 import phone from "@/assets/phone-ring.png";
 import zalo from "@/assets/zalo-icon.png";
+import { Helmet } from "react-helmet";
+import { useSelector } from "react-redux";
+
 const BaseLayout = () => {
   const { Header, Content } = Layout;
+  const title = useSelector((state) => state.title.txt);
+
   return (
     <div>
       <ConfigProvider
@@ -27,6 +32,9 @@ const BaseLayout = () => {
           </Content>
         </Layout>
       </ConfigProvider>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
 
       <div className="hotline-zalo-ring-wrap">
         <div className="hotline-zalo-ring">
