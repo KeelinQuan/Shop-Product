@@ -6,6 +6,7 @@ import { InputNumber, Table, Row, Col } from "antd";
 import { removeItem, setQuantityItem } from "@/redux/cart";
 import { DeleteOutlined } from "@ant-design/icons";
 import "@/style/cart.scss";
+import { titleTxt } from "@/redux/title";
 const { VITE_BASE_URL } = import.meta.env;
 const ProductTable = (props) => {
   const { dataSource = [], options = { edit: true, buttonCTA: null } } = props;
@@ -20,7 +21,12 @@ const ProductTable = (props) => {
         let max = item?.attributes?.quantityAvailable;
         return (
           <div className="info">
-            <Link to={`/detail/${item?.attributes?.slug}`}>
+            <Link
+              to={`/detail/${item?.attributes?.slug}`}
+              onClick={() => {
+                dispatch(titleTxt("Chi tiết sản phẩm"));
+              }}
+            >
               <img
                 className="thumbnail"
                 src={imgProduct}
@@ -28,7 +34,12 @@ const ProductTable = (props) => {
               />
             </Link>
             <div>
-              <Link to={`/detail/${item?.attributes?.slug}`}>
+              <Link
+                to={`/detail/${item?.attributes?.slug}`}
+                onClick={() => {
+                  dispatch(titleTxt("Chi tiết sản phẩm"));
+                }}
+              >
                 <h3>{item?.attributes?.name}</h3>
               </Link>
               <div className="show-on-mobile">

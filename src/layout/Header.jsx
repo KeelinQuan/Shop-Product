@@ -42,7 +42,16 @@ const Header = () => {
     },
     {
       key: "3",
-      label: <Link to="/list-order">Lịch sử mua</Link>,
+      label: (
+        <Link
+          to="/list-order"
+          onClick={() => {
+            dispatch(titleTxt("Lịch sử mua hàng"));
+          }}
+        >
+          Lịch sử mua
+        </Link>
+      ),
     },
   ];
   const menuItems = [
@@ -107,7 +116,9 @@ const Header = () => {
     {
       key: 5,
       label: (
-        <Link to="/cart">
+        <Link to="/cart"   onClick={() => {
+          dispatch(titleTxt("Giỏ hàng"));
+        }}>
           <Badge
             count={count?.length}
             overflowCount={10}

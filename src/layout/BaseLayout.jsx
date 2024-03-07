@@ -11,9 +11,14 @@ import { useSelector } from "react-redux";
 const BaseLayout = () => {
   const { Header, Content } = Layout;
   const title = useSelector((state) => state.title.txt);
-
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
   return (
     <div>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <ConfigProvider
         theme={{
           components: {
@@ -32,9 +37,6 @@ const BaseLayout = () => {
           </Content>
         </Layout>
       </ConfigProvider>
-      <Helmet>
-        <title>{title}</title>
-      </Helmet>
 
       <div className="hotline-zalo-ring-wrap">
         <div className="hotline-zalo-ring">

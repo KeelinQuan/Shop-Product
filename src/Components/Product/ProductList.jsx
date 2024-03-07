@@ -4,6 +4,9 @@ import { Button, Row, Col, Pagination, Card, Skeleton } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { convertToCurrency } from "@/utils/convertPrice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useDispatch } from "react-redux";
+import { titleTxt } from "@/redux/title";
+
 const { VITE_BASE_URL } = import.meta.env;
 const ProductList = (props) => {
   const {
@@ -26,6 +29,7 @@ const ProductList = (props) => {
     }
   }, [data, paging, setPaging, loading]);
   const nav = useNavigate();
+  const dispatch = useDispatch();
   let loadingElement = (
     <Row gutter={[15, 15]} justify="space-between">
       <Row gutter={[0, 15]} className="skeleton-container">
@@ -92,7 +96,12 @@ const ProductList = (props) => {
 
             return (
               <Col sm={24} md={type == "column" ? 24 : 6} key={index}>
-                <Link to={`/detail/${item.attributes?.slug}`}>
+                <Link
+                  to={`/detail/${item.attributes?.slug}`}
+                  onClick={() => {
+                    dispatch(titleTxt("Chi tiết sản phẩm"));
+                  }}
+                >
                   <Card
                     hoverable
                     key={item?.id}
