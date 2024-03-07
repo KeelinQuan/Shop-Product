@@ -5,8 +5,8 @@ import HeaderComponent from "./Header";
 import "@/style/layout.scss";
 import phone from "@/assets/phone-ring.png";
 import zalo from "@/assets/zalo-icon.png";
-import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const BaseLayout = () => {
   const { Header, Content } = Layout;
@@ -16,9 +16,12 @@ const BaseLayout = () => {
   }, [title]);
   return (
     <div>
-      <Helmet>
-        <title>{title}</title>
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>{title}</title>
+        </Helmet>
+      </HelmetProvider>
+
       <ConfigProvider
         theme={{
           components: {
