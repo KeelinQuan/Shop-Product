@@ -116,9 +116,12 @@ const Header = () => {
     {
       key: 5,
       label: (
-        <Link to="/cart"   onClick={() => {
-          dispatch(titleTxt("Giỏ hàng"));
-        }}>
+        <Link
+          to="/cart"
+          onClick={() => {
+            dispatch(titleTxt("Giỏ hàng"));
+          }}
+        >
           <Badge
             count={count?.length}
             overflowCount={10}
@@ -152,7 +155,12 @@ const Header = () => {
     <>
       <Row justify={"space-between"} align={"middle"}>
         <Col xs={2} md={2} className="logo">
-          <Link to="/">
+          <Link
+            to="/"
+            onClick={() => {
+              dispatch(titleTxt("Trang chủ"));
+            }}
+          >
             <img src={logo} alt="" />
           </Link>
         </Col>
